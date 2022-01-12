@@ -12,7 +12,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - htdocs:/usr/local/apache2
+      - htdocs:/usr/local/apache2/htdocs
 
   bind9:
     container_name: bind9_server
@@ -42,9 +42,9 @@ services:
 volumes:
   bind:
     external: true
-  apache2:
+  htdocs:
     external: true
-
+    
 networks:
   nt01:
     ipam:
