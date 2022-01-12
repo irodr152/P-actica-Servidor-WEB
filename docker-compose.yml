@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 
 services:
 
@@ -12,7 +12,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - htdocs:/usr/local/apache2/htdocs
+      - htdocs:/usr/local/apache2
 
   bind9:
     container_name: bind9_server
@@ -42,7 +42,7 @@ services:
 volumes:
   bind:
     external: true
-  htdocs:
+  apache2:
     external: true
 
 networks:
