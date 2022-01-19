@@ -29,7 +29,7 @@ services:
   
   cliente:
     container_name: apache_cliente
-    image: kasmweb/desktop-deluxe:1.9.0-rolling
+    image: kasmweb/desktop:1.10.0-rolling
 
     networks:
       nt01:
@@ -37,9 +37,11 @@ services:
     ports:
       - 6901:6901
     dns:
-      - 192.0.0.254 
+      - 192.0.0.254
+    stdin_open: true
+    tty: true
     environment:
-      VNC-PW: password
+      VNC_PW: password
 
 volumes:
   bind:
