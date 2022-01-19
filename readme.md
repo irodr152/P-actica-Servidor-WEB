@@ -50,7 +50,7 @@ cliente:
     dns:
       - 192.0.0.254 
     environment:
-      - VNC_PW= abc123.
+      VNC-PW: password
 ~~~
 
 -Precisamente la imagen que tenemos por asi decirlo es como una esxperiencia de escritorio pero desde nuestro navegador web

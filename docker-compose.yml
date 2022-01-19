@@ -27,7 +27,7 @@ services:
       - bind:/etc/bind
   
   
-cliente:
+  cliente:
     container_name: apache_cliente
     image: kasmweb/desktop-deluxe:1.9.0-rolling
 
@@ -39,7 +39,7 @@ cliente:
     dns:
       - 192.0.0.254 
     environment:
-      - VNC_PW= abc123.
+      VNC-PW: password
 
 volumes:
   bind:
