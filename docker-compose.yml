@@ -5,14 +5,14 @@ services:
   apache:
 
     container_name: apache_sserver
-    image: httpd
+    image: httpd #seleccionamos la imagen
     networks:
       nt01:
         ipv4_address: 192.0.0.10
     ports:
       - 90:90
     volumes:
-      - htdocs:/usr/local/apache2/htdocs
+      - htdocs:/usr/local/apache2/htdocs # nombre del volumen asociado a esa ruta
 
   bind9:
     container_name: bind9_server
@@ -20,12 +20,14 @@ services:
 
     networks:
       nt01:
-        ipv4_address: 192.0.0.254
+        ipv4_address: 192.0.0.254 # ponemos la ip
     ports:
-      - 56:56
+      - 56:56 #ponemos puerto
     volumes:
       - bind:/etc/bind
-  cliente:
+  
+  
+cliente:
     container_name: apache_cliente
     image: kasmweb/desktop-deluxe:1.9.0-rolling
 
@@ -41,7 +43,7 @@ services:
 
 volumes:
   bind:
-    external: true
+    external: true # con este parametro a true, tenemos que crear el volumen a mano, no nos lo crea directamente al hacer el docker compose
   htdocs:
     external: true
     
@@ -49,4 +51,5 @@ networks:
   nt01:
     ipam:
       config:
-        - subnet: 192.0.0.0/24
+        - subnet: 192.0.0.0/24 # aqui le decimos la subred que vamos a usar en todas las maquinas, en caso de que esta direccion de red no se corresponda con las ip dadas para el apache, dns etc no funcionará
+        
