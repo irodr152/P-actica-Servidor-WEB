@@ -12,6 +12,7 @@ services:
     ports:
       - 90:90
     volumes:
+      - configuracionapacheserver:/usr/local/apache2/conf
       - htdocs:/usr/local/apache2/htdocs # nombre del volumen asociado a esa ruta
 
   bind9:
@@ -49,6 +50,8 @@ volumes:
     external: true # con este parametro a true, tenemos que crear el volumen a mano, no nos lo crea directamente al hacer el docker compose
   htdocs:
     external: true
+  configuracionapacheserver:
+    external: true      
     
 networks:
   nt01:

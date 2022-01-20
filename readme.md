@@ -58,7 +58,7 @@ cliente:
 -Donde pone environment: es para especificarle la contraseña que va a usar para conectarse al VNC que es con lo que podemos acceder a ese escritorio
 
 
-##Configuracion general
+## Configuracion general
 
 ~~~
 volumes:
