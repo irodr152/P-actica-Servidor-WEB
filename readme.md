@@ -80,15 +80,22 @@ networks:
 
 
 ## Cuestiones propuestas
-Apache (IP fija)
 
+## Apache (IP fija)
+~~~
 container_name: apache_sserver
     image: httpd #seleccionamos la imagen
     networks:
       nt01:
         ipv4_address: 192.0.0.10
+~~~
+
+## DNS (un par de subdominios)
+
+~~~
 
 
+~~~
 ## Dos host virtuales diferentes utilizando "site-enable"
 ~~~
 
