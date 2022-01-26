@@ -101,19 +101,25 @@ container_name: apache_sserver
 ## Instala Wireshark para snifar paquetes DNS y HTTP
 
 ~~~
-wireshark:
+  wireshark:
     container_name: wireshark_docker
     image: linuxserver/wireshark
-    networks:
-      nt01:
-        ipv4_address: 192.0.0.40
-    ports:
-      - 3000:3000
+    cap_add:
+      - NET_ADMIN
+    network_mode: host #para que no se quede en modo puente
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    restart: unless-stopped
     volumes:
       - wireshark_docker:/config
 
+
   wireshark_docker:
     external: true      
+
+ESta coonfiguracion la puedes sacar de la pagina de la imagen, si se omiten algunos parametros, puede no funcionar el docker o que no te detecte las interfaces por las que vamos a snifar trafico DNS y HTTP
 ~~~
 
 
