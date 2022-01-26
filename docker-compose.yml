@@ -45,17 +45,30 @@ services:
     environment:
       VNC_PW: password
 
+  wireshark:
+    container_name: wireshark_docker
+    image: linuxserver/wireshark
+    networks:
+      nt01:
+        ipv4_address: 192.0.0.40
+    ports:
+      - 3000:3000
+    volumes:
+      - wireshark_docker:/config
+
 volumes:
   bind:
     external: true # con este parametro a true, tenemos que crear el volumen a mano, no nos lo crea directamente al hacer el docker compose
   htdocs:
     external: true
   configuracionapacheserver:
-    external: true      
+    external: true    
+  wireshark_docker:
+    external: true    
     
 networks:
   nt01:
     ipam:
       config:
         - subnet: 192.0.0.0/24 # aqui le decimos la subred que vamos a usar en todas las maquinas, en caso de que esta direccion de red no se corresponda con las ip dadas para el apache, dns etc no funcionará
-        
+ 

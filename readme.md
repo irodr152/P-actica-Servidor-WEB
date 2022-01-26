@@ -88,8 +88,33 @@ container_name: apache_sserver
       nt01:
         ipv4_address: 192.0.0.10
 
-Cliente (IP dinamica)
+
+## Dos host virtuales diferentes utilizando "site-enable"
+~~~
 
 
-DNS (un par de subdominios)
+~~~
+## Protocolo seguro HTTPS
+~~~
+
+~~~
+## Instala Wireshark para snifar paquetes DNS y HTTP
+
+~~~
+wireshark:
+    container_name: wireshark_docker
+    image: linuxserver/wireshark
+    networks:
+      nt01:
+        ipv4_address: 192.0.0.40
+    ports:
+      - 3000:3000
+    volumes:
+      - wireshark_docker:/config
+
+  wireshark_docker:
+    external: true      
+~~~
+
+
 
