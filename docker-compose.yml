@@ -52,7 +52,7 @@ services:
       - NET_ADMIN
     network_mode: host #para que no se quede en modo puente
     environment:
-      - PUID=1000
+      - PUID=1000 #parametros que nos dice que son recomendables en la pagina de donde te descargas la imagen
       - PGID=1000
       - TZ=Europe/London
     restart: unless-stopped

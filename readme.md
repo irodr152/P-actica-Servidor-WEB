@@ -93,12 +93,33 @@ container_name: apache_sserver
 ## DNS (un par de subdominios)
 
 ~~~
+Nos vamos a db.empty y escribimos lo siguiente
+
+;
+@	      IN   NS	ns.practica.com.
+@         IN   A   192.0.0.254
+@	      IN  AAAA ::1
+ns        IN   A   192.0.0.254
+hola  IN   A  192.0.0.10
+adios       IN CNAME hola.practica.com.
+
+Despues nos vamos a named.conf.local y hacemos esto
+
+// Do any local configuration here
+//
+zone "practica.com" {
+    type master;
+    file "/etc/bind/db.practica.com";
+
 
 
 ~~~
 ## Dos host virtuales diferentes utilizando "site-enable"
 ~~~
+Dentro del volumen del Apache buscamos el archivito httpd-vhosts.conf
+y tenemos que descomentar esta linea "ServerName" y le ponemos el nombre del dominio que queramos utilizar
 
+Como tenemos dos Virtual hsot le ponemos distinta configuracion a cada uno y ya valdria, por defecto lo dos virtual host, escuchan peticiones por el puerto 80
 
 ~~~
 ## Protocolo seguro HTTPS
