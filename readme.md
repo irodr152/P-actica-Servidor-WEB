@@ -124,6 +124,18 @@ Como tenemos dos Virtual hsot le ponemos distinta configuracion a cada uno y ya 
 ~~~
 ## Protocolo seguro HTTPS
 ~~~
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+
+con este comando creamos las claves , en caso de querer que los archivos se creen por ejemplo en el escritorio le cambiamos la ruta por el path del escritorio y estaria,
+
+Una vez  ejecutado, lanzamos el comando cp .key o .crt contenedor:ruta volumen
+Ejemplo:
+
+sudo docker cp apache-selfsigned.key apache_sserver:/usr/local/apache2/conf
+
+docker cp apache-selfsigned.crt apache_sserver:/usr/local/apache2/conf
+
+Despues de esto, nos vamos a inspeccionar el volumen y tenemos que entrar en el archivo httpd-ssl.conf y en required modules vamos viendo copiando y viendo en httpd.conf las lineas que tenemos que descomentar para que nos funcione el htpps.
 
 ~~~
 ## Instala Wireshark para snifar paquetes DNS y HTTP
